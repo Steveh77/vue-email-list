@@ -9,10 +9,15 @@ console.log("vue ok",Vue)
 const root = new Vue ({
     el:"#root",
     data:{
-      
+       email:""
     },
     computed: {
         
     },
-    
+    created() {
+        axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
+        .then((res) =>{
+            console.log(res.data);
+        })
+    },
 })
