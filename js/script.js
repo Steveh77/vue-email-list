@@ -9,15 +9,19 @@ console.log("vue ok",Vue)
 const root = new Vue ({
     el:"#root",
     data:{
-       email:""
+       emails:[]
     },
     computed: {
         
     },
     created() {
-        axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
-        .then((res) =>{
-            console.log(res.data);
-        })
+        for (let i = 0; i < 10; i++) {
+            axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
+            .then((res) =>{
+                console.log(res.data);
+                this.emails.push(res.data.response)
+            })
+
+        }
     },
 })
